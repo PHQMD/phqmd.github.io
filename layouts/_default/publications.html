@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="container">
+
+  {{ range .Params.sections }}
+  <h2>{{ .title }}</h2>
+  <hr>
+
+  {{ if eq .type "yearlinks" }}
+    {{ range .links }}
+    <h3><a href="{{ .url }}">{{ .label }}</a></h3>
+    {{ end }}
+
+  {{ else }}
+    {{ range .papers }}
+    {{ $id := .inspire_id }}
+    <p>
+      <strong>{{ .title }}</strong><br>
+      <em>{{ .authors }}</em><br>
+      {{ .journal }}<br>
+      {{ if $id }}
+      <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#{{ $id }}" aria-expanded="false" aria-controls="#{{ $id }}">Show abstract</button>
+      {{ end }}
+      {{ with .doi }}<a class="btn btn-primary" href="https://doi.org/{{ . }}" target="_blank">DOI</a>{{ end }}
+      {{ with .arxiv }}<a class="btn btn-primary" href="https://arxiv.org/abs/{{ . }}" target="_blank">arXiv</a>{{ end }}
+      {{ if $id }}<a class="btn btn-primary" href="https://inspirehep.net/literature/{{ $id }}" target="_blank">Inspire</a>{{ end }}
+    </p>
+    {{ with .abstract }}
+    <div id="{{ $id }}" class="collapse">{{ . }}</div>
+    {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ end }}
+
+</div>
+{{ end }}
