@@ -1,5 +1,5 @@
-baseurl = "https://phsd.github.io/"
-title = "Parton-Hadron-String Dymanics"
+baseurl = "https://phqmd.github.io/"
+title = "Parton-Hadron-String Dynamics"
 # canonifyurls  = true
 
 DefaultContentLanguage = "en"
@@ -36,7 +36,7 @@ theme = "beautifulhugo"
 [[menu.main]]
   name = "Publications"
   url = "publications"
-  weight = 4
+  weight = 3
 
 [[menu.main]]
   name = "Talks"
