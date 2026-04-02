@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="container">
+
+  {{ range .Params.talks }}
+  <p>
+    <strong>{{ .title }}</strong><br>
+    <em>{{ .speaker }}</em><br>
+    {{ .event }}<br>
+    {{ with .slides }}<a class="btn btn-danger" href="{{ . }}" target="_blank">Slides</a>{{ end }}
+  </p>
+  {{ end }}
+
+</div>
+{{ end }}
