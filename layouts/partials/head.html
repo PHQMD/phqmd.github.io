@@ -14,8 +14,8 @@
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
 {{- with .Site.Params.favicon }}
-  <link rel="shortcut icon" href='{{ . | absURL }}' type='image/x-icon'/>
-  <link rel="icon" href='{{ . | absURL }}' type='image/x-icon'/>
+  <link rel="shortcut icon" href='{{ . | relURL }}' type='image/x-icon'/>
+  <link rel="icon" href='{{ . | relURL }}' type='image/x-icon'/>
 {{- end -}}
 <!-- Social Media Tags -->
 {{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
