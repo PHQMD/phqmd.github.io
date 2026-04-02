@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="container">
+
+  {{ range .Params.sections }}
+  <h1 class="text-center">{{ .title }}</h1>
+  <hr>
+
+  {{ if eq .type "list" }}
+  <ul>
+    {{ range .members }}
+    <li>{{ if .url }}<a href="{{ .url }}" target="_blank">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</li>
+    {{ end }}
+  </ul>
+
+  {{ else }}
+  <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    {{ range .members }}
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center" style="margin-bottom: 2em;">
+      <img src="{{ .img | default "/img/team/person.webp" }}" alt="{{ .name }}">
+      <h4>{{ .name }}</h4>
+      {{ with .address }}<div>{{ . }}</div>{{ end }}
+      {{ with .phone }}<div>{{ . }}</div>{{ end }}
+      {{ with .email }}<div><a href="mailto:{{ . }}">{{ . }}</a></div>{{ end }}
+      {{ with .publications }}<div><a href="{{ . }}" target="_blank">Publications</a></div>{{ end }}
+      {{ with .website }}<div><a href="{{ . }}">Personal web-page</a></div>{{ end }}
+      {{ with .office }}<div>Office: {{ . }}</div>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ end }}
+
+</div>
+{{ end }}
